@@ -10,7 +10,7 @@ from DocVecsArray import DocvecsArray
 from numpy import random
 from collections import defaultdict
 
-file = "yeast_seq.fasta"
+file = "compiled.fasta"
 input_path = r"../data"
 output_path = r"../data/inpfiles"# save folder
 

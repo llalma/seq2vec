@@ -430,8 +430,8 @@ int main(int argc, char *argv[])
 	printf("%s\n", path_save_vectors);
 	*/
 	path_model = "..\\..\\data\\model\\M_s2v.binary";
-	path_file_to_be_processed = "..\\..\\data\\yeast_seq.fasta";
-	path_save_vectors = "..\\..\\data\\embeddings\\yeast_s2v.binary";
+	path_file_to_be_processed = "..\\..\\data\\compiled.fasta";
+	path_save_vectors = "..\\..\\data\\embeddings\\compiled.binary";
 	
 	start = clock();
 

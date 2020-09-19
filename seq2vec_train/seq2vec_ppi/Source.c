@@ -8,6 +8,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h> // computation time
+#include <windows.h>
 
 #define MaxSequences 200000 // number of sequences
 #define K 3 // kmer size
@@ -168,6 +169,14 @@ int RandomInt(int max)
 double RandomDouble()
 {
 	return ((double)rand() / RAND_MAX) - 0.5;
+}
+
+int KmerIndex(char* kmer)
+{
+	int index = 0;
+	for (int i = 0; i < K; i++)
+		index = index * alphabet_size + reverse[kmer[i]];
+	return index;
 }
 
 void readfile_vocab(char* filename)
@@ -352,14 +361,6 @@ void SaveSequences(char* path)
 		fwrite(seq_vector[i], sizeof(double), SigLength, file);
 
 	fclose(file);
-}
-
-int KmerIndex(char* kmer)
-{
-	int index = 0;
-	for (int i = 0; i < K; i++)
-		index = index * alphabet_size + reverse[kmer[i]];
-	return index;
 }
 
 // testNum: # splits; Training : 1 for training the nueral network, 0 for inference stage
@@ -770,8 +771,8 @@ int main(int argc, char *argv[])
 	
 	
 	path_save_model = "..\\..\\data\\model\\M_s2v.binary";
-	path_file_to_be_processed = "..\\..\\data\\yeast_seq.fasta";
-	path_save_vectors = "..\\..\\data\\model\\yeast_s2v.binary";
+	path_file_to_be_processed = "..\\..\\data\\compiled.fasta";
+	path_save_vectors = "..\\..\\data\\model\\compiled.binary";
 	doctag_path = "..\\..\\data\\inpfiles\\doctag_txt0.txt";
 	vocab_path = "..\\..\\data\\inpfiles\\vocab_txt0.txt";
 	
